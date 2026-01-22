@@ -22,6 +22,12 @@ class FenwickTree {
         }
         return sum;
     }
+//return the sum from index i to index j
+    int rangesum(int i, int j) {
+        int sumJ = query(j);
+        int sumI = query(i - 1);
+        return sumJ - sumI;
+    }
 }
 public class FenwickTreeDemo {
     public static void main(String[] args) {
@@ -34,5 +40,6 @@ public class FenwickTreeDemo {
         fenwickTree.update(6, 6);
         fenwickTree.update(7, 7);
         System.out.println(fenwickTree.query(5));
+        System.out.println(fenwickTree.rangesum(4, 7));
     }
 }
