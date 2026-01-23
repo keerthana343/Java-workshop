@@ -52,28 +52,43 @@ class SLL{
        return len;
    }
    //fast node and slow node approach
-    int findNodeFromEnd(int n){
+    void findMiddle(){
         Node slow, fast;
-            slow = fast = head;
-
-         while(fast.next != null){
-              slow = slow.next;
-              fast = fast.next;
-              if(fast != null)
-                fast = fast.next;
-            else
+        slow = fast = head;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(fast == slow){
+                System.out.println("Cycle detected");
                 break;
+            }
         }
-         return n;
+        // System.out.println(slow.value);
+        }
+        void createCycle(){
+            tail.next = head;
 }
-
+//meeting both points at middle node
+// void findMiddle2(){
+//     Node meet1, meet2;
+//     meet1 = meet2 = head;
+//     int len = length();
+//     int mid = len/2;
+//     for(int i=0; i<mid; i++){
+//         meet2 = meet2.next;
+//     }
+//     System.out.println(meet2.value);
+// }
+}
 public class SLLMain{
    public static void main(String[] a){
        SLL sl = new SLL(5);
        sl.append(10);
        sl.append(15);
+       sl.append(19);
        sl.printList();
-        System.out.println(:"Length: " + sl.length());
-   }
+        System.out.println("Length: " + sl.length());
+        sl.createCycle();
+         sl.findMiddle();
 }
 }
